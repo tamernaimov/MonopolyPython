@@ -19,7 +19,7 @@ class Land(Property):
                     player.ownedProperty.append(self) #add the land to the player's owned property
                     self.owner = player.name #this is the owner of the property after being bought
                     self.is_owned = True
-                    print(f"You've bought {self.country}")
+                    print(f"You've bought {self.name}")
 
         elif self.is_owned == True and player.name != self.owner:
             print(f"You've landed on {self.owner}'s property! You pay {self.rent}$ then!")

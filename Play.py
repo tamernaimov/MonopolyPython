@@ -40,11 +40,11 @@ class Play:
 
         self.checkForContinue()
 
-        self.throwDices()  # Throw dices and update positions
-        self.throwDices() #on pos 6
+        self.throwDices()  # Throw dices and update positions 3
         for user in self.users:
             user.position = 0
-        print("POSITION TO ALL IS 0 NOW")
+
+        print("POSITION TO ALL IS 1 NOW")
         self.throwDices()
 
 

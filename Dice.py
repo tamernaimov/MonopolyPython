@@ -9,8 +9,8 @@ class Dice():
 
     def throwDice(self, player):
         while True:
-            a = random.randint(2,2)
-            b = random.randint(1,1)
+            a = random.randint(1,1)
+            b = random.randint(2,2)
             print(f"Dices Thrown by {player.name} were {a} And {b}")
 
             if a == b:
