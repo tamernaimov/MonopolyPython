@@ -29,7 +29,6 @@ class Play:
             if self.users[i].money <= 0:
                 self.users.pop(i)
             else:
-                print("GAME IS NOT OVER")
                 break
 
     def playGame(self):
@@ -37,14 +36,8 @@ class Play:
         print("we set up players")
         print()
         #Update Block
-
-        self.checkForContinue()
-
-        self.throwDices()  # Throw dices and update positions 3
-        for user in self.users:
-            user.position = 0
-
-        print("POSITION TO ALL IS 1 NOW")
-        self.throwDices()
+        while True:
+            self.checkForContinue()
+            self.throwDices()
 
 

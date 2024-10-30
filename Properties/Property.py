@@ -1,7 +1,8 @@
-from abc import ABC, abstractmethod
+from Properties.Land import Land
+
 #price, level, owner, county(for monopoly),
 
-class Property(ABC):
+class Property():
     def __init__(self,name,price,rent,level,country,typeOfBuilding):
         self.name = name
         self.rent = rent
@@ -11,6 +12,6 @@ class Property(ABC):
         self.typeOfBuilding = typeOfBuilding
         self.is_owned = False
 
-    @abstractmethod
-    def action(self,player):
-        self.action(player)
+    def define(self):
+        if self.typeOfBuilding == "Land":
+            return Land(self.name,self.price,self.rent,self.level,self.country,self.typeOfBuilding)

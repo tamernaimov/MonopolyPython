@@ -9,30 +9,36 @@ class Dice():
 
     def throwDice(self, player):
         while True:
-            a = random.randint(1,1)
-            b = random.randint(2,2)
+            a = random.randint(1,6)
+            b = random.randint(1,6)
             print(f"Dices Thrown by {player.name} were {a} And {b}")
 
             if a == b:
                 player.position += a+b
-                self.map.returnAction(player)
+
                 print()
                 if player.position >= 31:
                     player.position -= 31
                     player.money += 500000
                     print(f"{player.name}'s money is currently {player.money}")
                     print(f"Current Position for {player.name} is {player.position}")
+                    self.map.returnAction(player)
                 else:
                     print(f"Current Position for {player.name} is {player.position}")
+                    self.map.returnAction(player)
 
             else:
-                #print("No double for you!")
                 player.position += a+b
-                self.map.returnAction(player)
-                print(f"Current Position for {player.name} is {player.position}")
+
+
                 if player.position >= 31:
                     player.position -= 31
+                    print(f"Current Position for {player.name} is {player.position}")
+                    self.map.returnAction(player)
                     player.money += 500000
                     print(f"{player.name}'s money is currently {player.money}")
+                else:
+                    print(f"Current Position for {player.name} is {player.position}")
+                    self.map.returnAction(player)
                 break
 

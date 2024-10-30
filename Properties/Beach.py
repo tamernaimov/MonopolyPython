@@ -1,12 +1,12 @@
 from Properties.Property import Property
+from Space import Space
 
 
-class Beach():
-    def __init__(self,price,rent,owner):
+class Beach(Space):
+    def __init__(self,name,price,rent):
         self.price = price
         self.rent = rent
-        self.owner = owner
-
+        self.owner = ""
 
     def action(self,player):
-        print("ACTION HAPPENED!")
+        print("BEACH ACTION HAPPENED!")
