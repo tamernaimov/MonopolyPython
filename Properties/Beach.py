@@ -1,4 +1,3 @@
-from Properties.Property import Property
 from Space import Space
 
 

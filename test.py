@@ -11,4 +11,8 @@ with io.StringIO() as buf, contextlib.redirect_stdout(buf):
 print(num)
 print('bruh')
 
+print()
+print()
+print()
 num = testMethod()
+print(testMethod())

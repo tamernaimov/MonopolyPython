@@ -1,17 +1,11 @@
+from Properties.Property import Property
 from Space import Space
 
 
-class House(Space):
+class House(Space,Property):
 #price, level, owner, county(for monopoly),
     def __init__(self,name,price,rent,level,country,typeOfBuilding):
-        self.name = name
-        self.price = price
-        self.rent = rent
-        self.level = level
-        self.country = country
-        self.typeOfBuilding = typeOfBuilding
-        self.owner = ""
-        self.is_owned = False
+        super().__init__(name,price,rent,level,country,typeOfBuilding)
 
 
 

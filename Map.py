@@ -4,51 +4,49 @@ from Properties.Beach import Beach
 from Properties.Hotel import Hotel
 from Properties.House import House
 from Properties.Land import Land
-from Properties.Property import Property
+from Properties.PropertyFactory import PropertyFactory
 from Start import Start
 
 
 class Map():
     def __init__(self):
         self.space = [Start(),
-                      Property("Grenada", 5000, 2000, 0, "Spain", "Land").define(),
-                      Property("Seville", 2000, 3000, 0, "Spain", "Land").define(),
+                      PropertyFactory("Grenada", 5000, 2000, 0, "Spain", "Land").createB(),
+                      PropertyFactory("Seville", 2000, 3000, 0, "Spain", "Land").createB(),
                       Land("Madrid", 3000, 200, 0, "Spain", "Land"),
                       Beach("Bali", 3000, 200),
-                      Property("Hong Kong", 3000, 200, 0, "China", "Land").define(),
-                      Property("Beijing", 3000, 200, 0, "China", "Land").define(),
-                      Property("Shanghai", 3000, 200, 0, "China", "Land").define(),
-                      Property("Shenzhen!", 3000, 200, 0, "China", "Land").define(),#MAKE IT A JAIL THIS IS NOT RIGHT
-                      Property("Venice!", 3000, 200, 0, "Italy", "Land").define(),
-                      Property("Milan", 3000, 200, 0, "Italy", "Land").define(),
-                      Property("Rome", 3000, 200, 0, "Italy", "Land").define(),
+                      PropertyFactory("Hong Kong", 3000, 200, 0, "China", "Land").createB(),
+                      PropertyFactory("Beijing", 3000, 200, 0, "China", "Land").createB(),
+                      PropertyFactory("Shanghai", 3000, 200, 0, "China", "Land").createB(),
+                      PropertyFactory("Shenzhen!", 3000, 200, 0, "China", "Land").createB(),#MAKE IT A JAIL THIS IS NOT RIGHT
+                      PropertyFactory("Venice!", 3000, 200, 0, "Italy", "Land").createB(),
+                      PropertyFactory("Milan", 3000, 200, 0, "Italy", "Land").createB(),
+                      PropertyFactory("Rome", 3000, 200, 0, "Italy", "Land").createB(),
                       ChanceCard(),
-                      Property("Hamburg!", 3000, 200, 0, "Germany", "Land").define(),
+                      PropertyFactory("Hamburg!", 3000, 200, 0, "Germany", "Land").createB(),
                       Beach("Cyprus",3000,200),
-                      Property("Berlin", 3000, 200, 0, "Germany", "Land").define(),
-                      Property("Liverpool!", 3000, 200, 0, "England", "Land").define(),#MAKE THIS A WORLD CHAMPIONSHIP
-                      Property("London!", 3000, 200, 0, "England", "Land").define(),
+                      PropertyFactory("Berlin", 3000, 200, 0, "Germany", "Land").createB(),
+                      PropertyFactory("Liverpool!", 3000, 200, 0, "England", "Land").createB(),#MAKE THIS A WORLD CHAMPIONSHIP
+                      PropertyFactory("London!", 3000, 200, 0, "England", "Land").createB(),
                       Beach("Dubai",2000,200),
-                      Property("Sydney!", 3000, 200, 0, "England", "Land").define(),
+                      PropertyFactory("Sydney!", 3000, 200, 0, "England", "Land").createB(),
                       ChanceCard(),
-                      Property("Chicago", 3000, 200, 0, "USA", "Land").define(),
-                      Property("Las Vegas", 3000, 200, 0, "USA", "Land").define(),
-                      Property("New York", 3000, 200, 0, "USA", "Land").define(),
-                      Property("Heisenberg CITY!", 3000, 200, 0, "USA", "Land").define(), #World Tour
+                      PropertyFactory("Chicago", 3000, 200, 0, "USA", "Land").createB(),
+                      PropertyFactory("Las Vegas", 3000, 200, 0, "USA", "Land").createB(),
+                      PropertyFactory("New York", 3000, 200, 0, "USA", "Land").createB(),
+                      PropertyFactory("Heisenberg CITY!", 3000, 200, 0, "USA", "Land").createB(), #World Tour
                       Beach("Nice",2000,200),
-                      Property("Lyon", 3000, 200, 0, "France", "Land").define(),
-                      Property("Paris", 3000, 200, 0, "France", "Land").define(),
+                      PropertyFactory("Lyon", 3000, 200, 0, "France", "Land").createB(),
+                      PropertyFactory("Paris", 3000, 200, 0, "France", "Land").createB(),
                       ChanceCard(),
-                      Property("Osaka", 3000, 200, 0, "Spain", "Land").define(),
-                      Property("Tokyo", 3000, 200, 0, "Spain", "Land").define(),]
-
-
-
+                      PropertyFactory("Osaka", 3000, 200, 0, "Spain", "Land").createB(),
+                      PropertyFactory("Tokyo", 3000, 200, 0, "Spain", "Land").createB(),]
 
     def returnAction(self,player):
         pos = player.position - 1
         result = self.space[pos].action(player)
         print("------------------DONE ACTION-----------------")
+
         if isinstance(result, House):
             print("MOMMA WE MADE IT")
             self.space[pos] = result
