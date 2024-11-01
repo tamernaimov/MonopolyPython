@@ -4,9 +4,9 @@ from Space import Space
 
 class Hotel(Space,Property):
 #price, level, owner, county(for monopoly),
-    def __init__(self,name,price,rent,level,country,typeOfBuilding):
-        super().__init__(name,price,rent,level,country,typeOfBuilding)
-
+    def __init__(self,name,price,rent,country,typeOfBuilding):
+        super().__init__(name,price,rent,country,typeOfBuilding)
+        self.level = 5
 
 
     def action(self,player):
