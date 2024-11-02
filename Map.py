@@ -1,4 +1,5 @@
 from Cards.ChanceCard import ChanceCard
+from Jail import Jail
 from Player import Player
 from Properties.Beach import Beach
 from Properties.Hotel import Hotel
@@ -10,6 +11,7 @@ from Start import Start
 
 class Map():
     def __init__(self):
+        self.jail = Jail()
         self.space = [Start(),
                       PropertyFactory("Grenada", 5000, 2000,  "Spain", "Land").createB(),
                       PropertyFactory("Seville", 2000, 3000,  "Spain", "Land").createB(),
@@ -18,7 +20,7 @@ class Map():
                       PropertyFactory("Hong Kong", 3000, 200,  "China", "Land").createB(),
                       PropertyFactory("Beijing", 3000, 200,  "China", "Land").createB(),
                       PropertyFactory("Shanghai", 3000, 200,  "China", "Land").createB(),
-                      PropertyFactory("Shenzhen!", 3000, 200,  "China", "Land").createB(),#MAKE IT A JAIL THIS IS NOT RIGHT
+                      self.jail,
                       PropertyFactory("Venice!", 3000, 200,  "Italy", "Land").createB(),
                       PropertyFactory("Milan", 3000, 200,  "Italy", "Land").createB(),
                       PropertyFactory("Rome", 3000, 200,  "Italy", "Land").createB(),
@@ -43,12 +45,13 @@ class Map():
                       PropertyFactory("Tokyo", 3000, 200,  "Spain", "Land").createB(),]
 
     def returnAction(self,player):
+
+        if player.inJail == True:
+            self.jail.action(player)
+            return
         pos = player.position - 1
         result = self.space[pos].action(player)
         print("\n      ------------------DONE ACTION-----------------")
 
         if isinstance(result, House) or isinstance(result,Land):
-            print("MOMMA WE MADE IT")
             self.space[pos] = result
-            print(self.space[pos].typeOfBuilding)
-

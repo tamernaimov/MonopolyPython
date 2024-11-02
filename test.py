@@ -16,3 +16,13 @@ print()
 print()
 num = testMethod()
 print(testMethod())
+print()
+print()
+
+def returnExample():
+    a = 7
+    b = 4
+    return a+b
+
+c = returnExample()
+print(c)

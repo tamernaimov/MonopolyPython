@@ -1,6 +1,7 @@
 from random import choice
 
 from Cards.Card import Card
+from Player import Player
 from Space import Space
 
 import random
@@ -23,7 +24,7 @@ class ChanceCard(Card,Space):
     def showCard(self):
         pass
 
-    def action(self, player):
+    def action(self, player:Player):
         card = random.randint(0,len(self.simple_chance_cards))
         print(card)
 
@@ -37,7 +38,13 @@ class ChanceCard(Card,Space):
         elif card == 5:
             player.position -=3
 
+        elif card == 6:
+            player.inJail = True
+
         elif card == 7:
+            player.hasJailCard = True
+
+        elif card == 8:
             player.position = 0
             player.money += 500000
 

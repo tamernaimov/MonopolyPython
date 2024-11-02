@@ -1,6 +1,7 @@
 import contextlib
 import io
 
+from Player import Player
 from Properties.Hotel import Hotel
 from Properties.House import House
 from Properties.Property import Property
@@ -10,16 +11,16 @@ class Land(Space,Property):
     def __init__(self,name,price,rent,country,typeOfBuilding):
         super().__init__(name,price,rent,country,typeOfBuilding)
 
-    def buyProperty(self,player):
+    def buyProperty(self,player: Player):
         if self.is_owned == False and self.level == 0:
             answer = input(f"this property is not bought! Would you like to buy {self.name}?: ")
-            if answer == "y":
+            if answer == "y" and player.money >= self.price:
               super().updateProperty(player) #level should be 1
-            if answer == "n":
-                print("Okay, you won't get it then!")
+            else:
+                print("You get NOTHING!")
 
     def defineType(self):
-        result = super().define()
+        result = super().define() #returns the property type by level
         if result == "Land":
            return self
         elif result == "House":
@@ -34,5 +35,5 @@ class Land(Space,Property):
         super().upgrade(player) #check for upgrading
         result = self.defineType() #defines the type of Property --> returns the property
 
-        self.justBought = False # needed for the
-        return result
+        self.justBought = False # needed for the upgrading part
+        return result #returning the object (Could be land, could be house)

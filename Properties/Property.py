@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from types import NoneType
 
 from Player import Player
 
@@ -17,8 +18,9 @@ class Property(ABC):
         self.justBought = False
         self.is_owned = False
 
-    def upgradeProperty(self, player):
+    def upgradeProperty(self):
         self.level = self.level + 1
+        self.price = self.price + (self.price*1.5)
 
     def updateProperty(self,player):
         player.money -= self.price
@@ -49,20 +51,23 @@ class Property(ABC):
         if self.is_owned == True and player.name == self.owner and self.justBought == False:
             buyOrNot = input(
                 f"You are on your own ({self.name}) property!: {self.name}, Would you like to upgrade it(get it to the next level)?: ")
-            if buyOrNot.lower() == "y":# after that check for level and then define what string to return
-                self.upgradeProperty(player)
+            if buyOrNot.lower() == "y" and player.money >= self.price:# after that check for level and then define what string to return
+                self.upgradeProperty()
+                print("You've successfully upgraded the property")
             else:
-                print("you get nothing!")
+                print("You get NOTHING!")
 
     def tradeProperty(self,player):
         if self.is_owned == True and player.name != self.owner:
             answer = input(f"Would you like to buy this property from: {self.owner}?: ")
-            if answer == "y":
+            if answer == "y" and player.money >= self.price:
+                player.ownedProperty.append(self.name)
                 self.owner = player.name
-                self.ownerOBJ.ownedProperty.remove(self.name)
+                self.ownerOBJ.ownedProperty.remove(self.name) #potentional error here (debug it)
                 self.ownerOBJ = player
                 self.justBought = True
                 player.money -= self.price
+                print(f"This property now belongs to {player.name}")
 
             elif answer == "n":
                 print("Well, you're not getting it then!")

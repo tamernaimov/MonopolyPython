@@ -8,4 +8,5 @@ class Player():
         self.position = 0  # Initial position
         self.ownedProperty = []
         self.ownedBeaches = []
-
+        self.inJail = False
+        self.hasJailCard = False
