@@ -25,7 +25,7 @@ class ChanceCard(Card,Space):
         pass
 
     def action(self, player:Player):
-        card = random.randint(0,len(self.simple_chance_cards))
+        card = random.randint(0,len(self.simple_chance_cards) - 1)
         print(card)
 
         if card == 0:player.money += 50

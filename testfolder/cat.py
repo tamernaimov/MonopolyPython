@@ -5,5 +5,5 @@ class cat(animal):
         self.level = 2
 
     def func(self):
-
        print(self.level)
+       return 3

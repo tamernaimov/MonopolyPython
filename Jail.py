@@ -25,8 +25,9 @@ class Jail(Space):
 
         elif answer == 2:
             if player.money >= 50000:
-                print("You are out of Jail")
                 player.money -= 50000
+                print("You are out of Jail")
+                player.inJail = False
             else:
                 print("You dont have money bro!")
 

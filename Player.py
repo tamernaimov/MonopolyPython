@@ -10,3 +10,4 @@ class Player():
         self.ownedBeaches = []
         self.inJail = False
         self.hasJailCard = False
+        self.travelling = False

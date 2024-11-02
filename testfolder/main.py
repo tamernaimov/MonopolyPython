@@ -3,5 +3,6 @@ from cat import cat
 cat = cat()
 animal = animal()
 
-cat.func()
-animal.func()
+
+result  = cat.func()
+print(result)

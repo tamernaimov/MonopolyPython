@@ -3,5 +3,4 @@ class animal():
         self.level = 0
 
     def func(self):
-
         print(self.level)
