@@ -9,3 +9,4 @@ class Players():
             name = input(f"Enter name for player {i + 1}: ")
             player = Player(name)
             self.users.append(player)
+        return self.users

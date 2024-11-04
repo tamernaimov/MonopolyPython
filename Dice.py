@@ -19,7 +19,7 @@ class Dice():
             if a == b:
                 player.position += a+b
 
-                print()
+                print("YOU JUST THREW A DOUBLE(Lucky)")
                 if player.position >= 31:
                     player.position -= 31
                     player.money += 500000

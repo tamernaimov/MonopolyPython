@@ -1,26 +1,52 @@
-from Player import Player
+from typing import List
+
 from Properties.Property import Property
 
 class MakeMonopoly():
     def __init__(self):
-        self.properties = []
-
-    def fromSpaceToProperties(self,space):
+        self.properties: List['Property'] = []
         self.countries = []
-        self.propertiesFromCountry = []
+        self.countriesWithMonopoly = []
 
-        for space in space: #add all the properties in
-            if isinstance(space, Property):
-                self.properties.append(space)
+    def fromSpaceToProperties(self,space,player):
+        if len(self.countries) == 0:
+            for space in space: #add all the properties in
+                if isinstance(space, Property):
+                    self.properties.append(space)
 
-        for property in self.properties:
-            self.countries.append(property.country) #add countries
+            for property in self.properties:
+                self.countries.append(property.country) #add countries
 
-        self.countries = list(set(self.countries)) #remove duplicates
+        countriesSorted = list(dict.fromkeys(self.countries)) #remove duplicates
 
-        #for country in self.countries:
-            #for user in self.users:
+        if len(player.ownedPropertyCountries) == 0:
+            print("YOU DO NOT HAVE PROPERTIES")
+            return
 
 
-        #for country in self.countries:
-            #print(country)
+        for countrySorted in countriesSorted: #for every country (no dupes)
+            counter1 = 0
+            counter2 = 0
+
+            for owned in player.ownedPropertyCountries: #for each owned country
+                if owned == countrySorted:
+                    counter1 +=1 #how many properties from spain (for example)
+
+            for country in self.countries: # check for how many countries of each are there
+                if country == countrySorted:
+                    counter2 += 1
+
+            if counter1 == counter2: #and counter2 != 0
+                print(f"WOW YOU GOT A MONOPOLY IN {countrySorted}!!!")
+                self.countriesWithMonopoly.append(countrySorted)
+                self.countriesWithMonopoly= list(dict.fromkeys(self.countriesWithMonopoly)) #remove dupes
+                self.updateProperty()
+
+
+    def updateProperty(self):
+        for prop in self.properties:
+            if prop.country == self.countriesWithMonopoly and prop.inMonopoly == False:
+                prop.price = prop.price * 2
+                prop.rent = prop.rent * 2
+                prop.inMonopoly = True
+                print("Your property has just been upgraded!")

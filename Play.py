@@ -1,18 +1,14 @@
 from Dice import Dice
 from Player import Player
-from Map import Map
+from Players import Players
 class Play:
     def __init__(self):
+        self.players = Players()
+        self.users = self.players.setPlayers()
         self.dice = Dice()
-        self.users = []
 
     def setPlayers(self):
-        playerNumber = int(input("Enter the number of players: "))
-        for i in range(playerNumber):
-            name = input(f"Enter name for player {i + 1}: ")
-            player = Player(name)
-            self.users.append(player)
-
+        pass
     def throwDices(self):
         for i in range(len(self.users)):
             self.dice.throwDice(self.users[i])
@@ -22,8 +18,8 @@ class Play:
         if len(self.users) == 1:
             print("GAME IS OVER")
             #EXIT
-            exit()
             print(f"WINNER IS {self.users[0].name}")
+            exit()
 
         for i in range(len(self.users)):
             if self.users[i].money <= 0:

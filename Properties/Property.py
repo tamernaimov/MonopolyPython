@@ -17,6 +17,7 @@ class Property(ABC):
         self.ownerOBJ:Player = None
         self.justBought = False
         self.is_owned = False
+        self.inMonopoly = False
 
     def upgradeProperty(self):
         self.level = self.level + 1
@@ -25,6 +26,7 @@ class Property(ABC):
     def updateProperty(self,player):
         player.money -= self.price
         player.ownedProperty.append(self.name) #ONLY THE NAME
+        player.ownedPropertyCountries.append(self.country)
         self.owner = player.name
         self.price = self.price * 2
         self.rent = self.rent *2
@@ -62,6 +64,7 @@ class Property(ABC):
             answer = input(f"Would you like to buy this property from: {self.owner}?: ")
             if answer == "y" and player.money >= self.price:
                 player.ownedProperty.append(self.name)
+                player.ownedPropertyCountries.append(self.country)
                 self.owner = player.name
                 self.ownerOBJ.ownedProperty.remove(self.name) #potentional error here (debug it)
                 self.ownerOBJ = player
