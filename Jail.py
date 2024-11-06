@@ -8,9 +8,7 @@ class Jail(Space):
     def action(self,player:Player):
 
         player.inJail = True
-        print("\n \n")
-        print("You are in Jail! ----------------------------------------------")
-        print()
+        print("You are in Jail!!!!!")
         print("Choose An option to escape!")
         answer = int(input("1.Pray for a double\n2.Pay 50 bands\n3.Use GetOutOFJail Card: "))
         print()

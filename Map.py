@@ -5,13 +5,11 @@ class Map():
         from Properties.Beach import Beach
         from Properties.PropertyFactory import PropertyFactory
         from Cards.ChanceCard import ChanceCard
-        from DisplayCountries import DisplayCountries
         from MakeMonopoly import MakeMonopoly
         from Jail import Jail
         from WorldTour import WorldTour
         from Start import Start
 
-        self.dc = DisplayCountries()
         self.makeMonopoly = MakeMonopoly()
         self.jail = Jail()
         self.worldTour = WorldTour()
@@ -48,33 +46,3 @@ class Map():
                       ChanceCard(),
                       PropertyFactory("Osaka", 3000, 200, "Japan", "Land").createB(),
                       PropertyFactory("Tokyo", 3000, 200,  "Japan", "Land").createB(),]
-
-
-
-
-    def travellingAction(self,player):
-        pos = player.position - 1
-        if player.travelling == True:
-            self.space[pos].action(player)
-            player.travelling = False
-
-
-
-
-    def returnAction(self,player):
-        from Properties.House import House
-        pos = player.position - 1
-
-        if player.inJail == True:
-            self.jail.action(player)
-            return
-
-        result = self.space[pos].action(player)
-        self.travellingAction(player)
-        self.makeMonopoly.fromSpaceToProperties(self.space, player)
-        self.dc.displayCountries(player,self.space)
-        print("\n      ------------------DONE ACTION-----------------        ")
-        if isinstance(result, House) or isinstance(result,Land):
-            self.space[pos] = result
-
-
