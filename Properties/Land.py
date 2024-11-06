@@ -13,11 +13,11 @@ class Land(Space,Property):
 
     def buyProperty(self,player: Player):
         if self.is_owned == False and self.level == 0:
-            answer = input(f"this property is not bought! Would you like to buy {self.name}?: ")
+            answer = input(f"This Property Has Not Been Bought Yet! Would You Like to Buy {self.name}? y/n: ")
             if answer == "y" and player.money >= self.price:
               super().updateProperty(player) #level should be 1
             else:
-                print("You get NOTHING!")
+                print("Your Loss!!")
 
     def defineType(self):
         result = super().define() #returns the property type by level

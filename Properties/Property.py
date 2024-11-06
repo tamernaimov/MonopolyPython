@@ -25,7 +25,7 @@ class Property(ABC):
 
     def updateProperty(self,player):
         player.money -= self.price
-        player.ownedProperty.append(self.name) #ONLY THE NAME
+        player.ownedProperty.append(self)
         player.ownedPropertyCountries.append(self.country)
         self.owner = player.name
         self.price = self.price * 2
@@ -38,6 +38,7 @@ class Property(ABC):
     def payRent(self,player):
         if self.is_owned == True and player.name != self.owner:
             print(f"You've landed on {self.owner}'s property! - {self.name} You pay {self.rent}$ then!")
+            input("Continue? y/y")
             player.money -= self.rent
 
 
@@ -52,7 +53,7 @@ class Property(ABC):
     def upgrade(self, player):
         if self.is_owned == True and player.name == self.owner and self.justBought == False:
             buyOrNot = input(
-                f"You are on your own ({self.name}) property!: {self.name}, Would you like to upgrade it(get it to the next level)?: ")
+                f"You are on your own ({self.name}) property!: {self.name}, Would you like to upgrade it(get it to the next level)?: y/n")
             if buyOrNot.lower() == "y" and player.money >= self.price:# after that check for level and then define what string to return
                 self.upgradeProperty()
                 print("You've successfully upgraded the property")
@@ -61,12 +62,12 @@ class Property(ABC):
 
     def tradeProperty(self,player):
         if self.is_owned == True and player.name != self.owner:
-            answer = input(f"Would you like to buy this property from: {self.owner}?: ")
+            answer = input(f"Would you like to buy this property from: {self.owner}? y/n:")
             if answer == "y" and player.money >= self.price:
-                player.ownedProperty.append(self.name)
+                player.ownedProperty.append(self)
                 player.ownedPropertyCountries.append(self.country)
                 self.owner = player.name
-                self.ownerOBJ.ownedProperty.remove(self.name) #potentional error here (debug it)
+                self.ownerOBJ.ownedProperty.remove(self) #potentional error here (debug it)
                 self.ownerOBJ = player
                 self.justBought = True
                 player.money -= self.price

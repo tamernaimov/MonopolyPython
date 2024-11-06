@@ -16,7 +16,7 @@ class Beach(Space):
 
     def buyBeach(self,player):
         if self.is_owned == False:
-            answer = input(f"this BEACH is not bought! Would you like to buy {self.name}?: ")
+            answer = input(f"This Beach Has Not Been Bought! Would You Like to Buy {self.name}?: ")
             if answer == "y":
                 self.updateBeach(player)
             if answer == "n":

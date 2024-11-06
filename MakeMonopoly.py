@@ -19,11 +19,6 @@ class MakeMonopoly():
 
         countriesSorted = list(dict.fromkeys(self.countries)) #remove duplicates
 
-        if len(player.ownedPropertyCountries) == 0:
-            print("YOU DO NOT HAVE PROPERTIES")
-            return
-
-
         for countrySorted in countriesSorted: #for every country (no dupes)
             counter1 = 0
             counter2 = 0
@@ -49,4 +44,4 @@ class MakeMonopoly():
                 prop.price = prop.price * 2
                 prop.rent = prop.rent * 2
                 prop.inMonopoly = True
-                print("Your property has just been upgraded!")
+                print(f"The Property {prop.name} Has Just Been Upgraded(Doubled - Price and Rent) Due to Monopoly!")

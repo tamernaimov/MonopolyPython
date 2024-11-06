@@ -5,12 +5,13 @@ class Map():
         from Properties.Beach import Beach
         from Properties.PropertyFactory import PropertyFactory
         from Cards.ChanceCard import ChanceCard
-
+        from DisplayCountries import DisplayCountries
         from MakeMonopoly import MakeMonopoly
         from Jail import Jail
         from WorldTour import WorldTour
         from Start import Start
 
+        self.dc = DisplayCountries()
         self.makeMonopoly = MakeMonopoly()
         self.jail = Jail()
         self.worldTour = WorldTour()
@@ -25,17 +26,17 @@ class Map():
                       PropertyFactory("Beijing", 3000, 200,  "China", "Land").createB(),
                       PropertyFactory("Shanghai", 3000, 200,  "China", "Land").createB(),
                       self.jail,
-                      PropertyFactory("Venice!", 3000, 200,  "Italy", "Land").createB(),
+                      PropertyFactory("Venice", 3000, 200,  "Italy", "Land").createB(),
                       PropertyFactory("Milan", 3000, 200,  "Italy", "Land").createB(),
                       PropertyFactory("Rome", 3000, 200,  "Italy", "Land").createB(),
                       ChanceCard(),
-                      PropertyFactory("Hamburg!", 3000, 200,  "Germany", "Land").createB(),
+                      PropertyFactory("Hamburg", 3000, 200,  "Germany", "Land").createB(),
                       Beach("Cyprus",3000,200),
                       PropertyFactory("Berlin", 3000, 200,  "Germany", "Land").createB(),
-                      PropertyFactory("Liverpool!", 3000, 200,  "England", "Land").createB(),#MAKE THIS A WORLD CHAMPIONSHIP
-                      PropertyFactory("London!", 3000, 200,"England", "Land").createB(),
+                      PropertyFactory("Liverpool", 3000, 200,  "England", "Land").createB(),#MAKE THIS A WORLD CHAMPIONSHIP
+                      PropertyFactory("London", 3000, 200,"England", "Land").createB(),
                       Beach("Dubai",2000,200),
-                      PropertyFactory("Sydney!", 3000, 200,  "England", "Land").createB(),
+                      PropertyFactory("Sydney", 3000, 200,  "England", "Land").createB(),
                       ChanceCard(),
                       PropertyFactory("Chicago", 3000, 200,  "USA", "Land").createB(),
                       PropertyFactory("Las Vegas", 3000, 200, "USA", "Land").createB(),
@@ -70,8 +71,8 @@ class Map():
 
         result = self.space[pos].action(player)
         self.travellingAction(player)
-        print(player.ownedProperty)
         self.makeMonopoly.fromSpaceToProperties(self.space, player)
+        self.dc.displayCountries(player,self.space)
         print("\n      ------------------DONE ACTION-----------------        ")
         if isinstance(result, House) or isinstance(result,Land):
             self.space[pos] = result
