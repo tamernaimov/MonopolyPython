@@ -9,7 +9,7 @@ class Map():
         from Jail import Jail
         from WorldTour import WorldTour
         from Start import Start
-
+        self.cc = ChanceCard()
         self.makeMonopoly = MakeMonopoly()
         self.jail = Jail()
         self.worldTour = WorldTour()
@@ -27,7 +27,7 @@ class Map():
                       PropertyFactory("Venice", 3000, 200,  "Italy", "Land").createB(),
                       PropertyFactory("Milan", 3000, 200,  "Italy", "Land").createB(),
                       PropertyFactory("Rome", 3000, 200,  "Italy", "Land").createB(),
-                      ChanceCard(),
+                      self.cc,
                       PropertyFactory("Hamburg", 3000, 200,  "Germany", "Land").createB(),
                       Beach("Cyprus",3000,200),
                       PropertyFactory("Berlin", 3000, 200,  "Germany", "Land").createB(),

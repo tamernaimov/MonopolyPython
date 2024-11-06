@@ -2,6 +2,7 @@ from DisplayCountries import DisplayCountries
 from Jail import Jail
 from MakeMonopoly import MakeMonopoly
 from Map import Map
+from Properties.Hotel import Hotel
 from Properties.Land import Land
 from WorldTour import WorldTour
 
@@ -32,7 +33,9 @@ class PlayerAction():
         self.travellingAction(player)
         self.makeMonopoly.fromSpaceToProperties(self.space, player)
         self.dc.displayCountries(player, self.space)
-        if isinstance(result, House) or isinstance(result, Land):
+        print(f"\n{player.name}'s Current balance - {player.money}")
+
+        if isinstance(result, House) or isinstance(result, Hotel):
             self.space[pos] = result
 
 

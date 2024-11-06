@@ -13,7 +13,7 @@ class Jail(Space):
         answer = int(input("1.Pray for a double\n2.Pay 50 bands\n3.Use GetOutOFJail Card: "))
         print()
         if answer == 1:
-            out_or_not = self.diceForJail.throwDiceOutOfJail(player)
+            out_or_not = self.diceForJail.throwDiceOutOfJail()
             if out_or_not == True:
                 player.inJail = False
                 print("You are out of Jail!")

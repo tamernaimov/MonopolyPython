@@ -1,6 +1,6 @@
 import random
 class DiceForJail():
-    def throwDiceOutOfJail(self,player):
+    def throwDiceOutOfJail(self):
         a = random.randint(1, 6)
         b = random.randint(1, 6)
         print()

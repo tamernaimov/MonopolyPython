@@ -48,4 +48,5 @@ class ChanceCard(Card,Space):
             player.position = 0
             player.money += 500000
 
-        print(self.simple_chance_cards[card])
+        print(f"You Picked Card:{self.simple_chance_cards[card]}")
+        input("Are you Ready To Continue? y/y:")
