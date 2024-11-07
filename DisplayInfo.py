@@ -1,11 +1,12 @@
 from Properties.Property import Property
 
 
-class DisplayCountries():
+class DisplayInfo():
     def __init__(self):
         self.properties = []
         self.countries = []
-    def displayCountries(self, player, space):
+
+    def displayInfo(self, player, space):
 
         if len(self.countries) == 0:
             for space in space:
@@ -13,12 +14,14 @@ class DisplayCountries():
                     self.properties.append(space)
 
             for property in self.properties:
-                self.countries.append(property.country) #add countries
+                self.countries.append(property.country)  # add countries
 
         countriesSorted = list(dict.fromkeys(self.countries))  # remove duplicates
 
         seperator = ", "
         print("\nOwned Properties:")
+        if not player.ownedProperty:
+            print("You Do not have any properties")
         for country in countriesSorted:
             property_names = []
             for prop in player.ownedProperty:
@@ -28,3 +31,6 @@ class DisplayCountries():
             if property_names:  # Check if there are any properties for this country
                 formatted_properties = seperator.join(property_names)
                 print(f"{country}: {formatted_properties}")
+
+        print(f"\n{player.name}'s Current balance - {player.money}\n \n ---------------NEXT TURN--------------- \n")
+

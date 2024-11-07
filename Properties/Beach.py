@@ -1,6 +1,5 @@
 from Space import Space
 
-
 class Beach(Space):
     def __init__(self,name,price,rent):
         self.name = name
@@ -26,7 +25,6 @@ class Beach(Space):
         if self.is_owned == True and player.name != self.owner:
             print(f"You've landed on {self.owner}'s property! - {self.name} You pay {self.rent}$ then!")
             player.money -= self.rent
-
 
     def action(self,player):
         self.buyBeach(player)

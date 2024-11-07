@@ -1,11 +1,12 @@
+from DiceForJail import DiceForJail
 from Player import Player
 from Space import Space
-from DiceForJail import DiceForJail
 
 class Jail(Space):
     def __init__(self):
         self.diceForJail = DiceForJail()
-    def action(self,player:Player):
+
+    def action(self, player: Player):
 
         player.inJail = True
         print("You are in Jail!!!!!")
@@ -14,12 +15,11 @@ class Jail(Space):
         print()
         if answer == 1:
             out_or_not = self.diceForJail.throwDiceOutOfJail()
-            if out_or_not == True:
+            if out_or_not:
                 player.inJail = False
                 print("You are out of Jail!")
             else:
                 print("Sorry, Not Sorry! You are NOT out of the jail!")
-
 
         elif answer == 2:
             if player.money >= 50000:
@@ -30,9 +30,8 @@ class Jail(Space):
                 print("You dont have money bro!")
 
         elif answer == 3:
-            if player.hasJailCard == True:
+            if player.hasJailCard:
                 print("You are out of Jail!")
                 player.inJail = False
-            elif player.hasJailCard == False:
-                print("You dont even have the card STUPID!")
-
+            elif not player.hasJailCard:
+                print("You dont even have a Jail Card!")

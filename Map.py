@@ -1,5 +1,3 @@
-from Properties.Land import Land
-
 class Map():
     def __init__(self):
         from Properties.Beach import Beach

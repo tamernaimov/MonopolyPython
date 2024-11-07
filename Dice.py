@@ -1,7 +1,5 @@
 import random
-
 from PlayerAction import PlayerAction
-
 
 class Dice():
     def __init__(self):
@@ -9,7 +7,7 @@ class Dice():
 
     def throwDice(self, player):
         while True:
-            if player.inJail == True:
+            if player.inJail:
                 self.pa.returnAction(player)
                 return
 
@@ -41,16 +39,4 @@ class Dice():
                 else:
                     print(f"Current Position for {player.name} is {player.position}\n")
                     self.pa.returnAction(player)
-
                 break
-
-    def throwDiceOutOfJail(self,player):
-        a = random.randint(1, 6)
-        b = random.randint(1, 6)
-        print(f"{player.name} Threw {a} and {b}")
-        if a==b:
-            return True
-        else:
-            return False
-
-

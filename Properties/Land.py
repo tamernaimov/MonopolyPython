@@ -27,7 +27,6 @@ class Land(Space,Property):
             house = House(self.name, self.price * 2, self.rent * 2, self.country, "House")
             return house
 
-
     def action(self, player):
         self.buyProperty(player) #buying property from self because it is Land
         super().payRent(player) #check for rent through Property

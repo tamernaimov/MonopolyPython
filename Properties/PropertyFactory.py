@@ -1,7 +1,5 @@
 from Properties.Land import Land
 
-#price, level, owner, county(for monopoly),
-
 class PropertyFactory():
     def __init__(self,name,price,rent,country,typeOfBuilding):
         self.name = name

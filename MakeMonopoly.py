@@ -1,10 +1,9 @@
 from typing import List
-
 from Properties.Property import Property
 
 class MakeMonopoly():
     def __init__(self):
-        self.properties: List['Property'] = []
+        self.properties: List[Property] = [] #removed '' (could be a problem)
         self.countries = []
         self.countriesWithMonopoly = []
 
@@ -14,20 +13,19 @@ class MakeMonopoly():
                 if isinstance(space, Property):
                     self.properties.append(space)
 
-            for property in self.properties:
-                self.countries.append(property.country) #add countries
+            for prop in self.properties:
+                self.countries.append(prop.country) #add countries
 
         countriesSorted = list(dict.fromkeys(self.countries)) #remove duplicates
 
         for countrySorted in countriesSorted: #for every country (no dupes)
             counter1 = 0
             counter2 = 0
-
-            for owned in player.ownedPropertyCountries: #for each owned country
-                if owned == countrySorted:
+            for owned in player.ownedProperty: #for each owned country
+                if owned.country == countrySorted:
                     counter1 +=1 #how many properties from spain (for example)
 
-            for country in self.countries: # check for how many countries of each are there
+            for country in self.countries:
                 if country == countrySorted:
                     counter2 += 1
 
@@ -36,7 +34,6 @@ class MakeMonopoly():
                 self.countriesWithMonopoly.append(countrySorted)
                 self.countriesWithMonopoly= list(dict.fromkeys(self.countriesWithMonopoly)) #remove dupes
                 self.updateProperty()
-
 
     def updateProperty(self):
         for prop in self.properties:
